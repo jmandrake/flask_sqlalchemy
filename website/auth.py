@@ -10,10 +10,10 @@ def login():
 def logout():
     return "<p>Logout</p>"
 
-@auth.route('/sign-up')
+@auth.route('/sign_up')
 def sign_up():
     return "<p>Sign Up</p>"
 
-@auth.route('/reset-password')
+@auth.route('/reset_password')
 def reset_password():
     return "<p>Reset Password</p>"
