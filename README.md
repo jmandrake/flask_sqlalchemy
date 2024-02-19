@@ -10,3 +10,9 @@ Follow along the video and create your own project using VS Code.
 You may run into errors while typing the code as-is from the video, which is 3 years old.
 The code in this repository was updated with the latest Python/Flask to fix those errors.
 
+To run this app: python main.py
+
+Recommendations:
+- Use a virtual environment: python -m .venv venv
+- Use a Makefile for shorter commands
+- Use the requirements.txt to install all modules used in this repo
