@@ -16,3 +16,9 @@ Recommendations:
 - Use a virtual environment: python -m .venv venv
 - Use a Makefile for shorter commands
 - Use the requirements.txt to install all modules used in this repo
+
+![image](https://github.com/jmandrake/flask_sqlalchemy/assets/9938598/190d6e7f-3a52-4598-bf76-3f97e3e6c7eb)
+
+![image](https://github.com/jmandrake/flask_sqlalchemy/assets/9938598/ff19d917-539b-4de5-a1e2-32d829d5d6e1)
+
+![image](https://github.com/jmandrake/flask_sqlalchemy/assets/9938598/e4e03d5f-4de3-43fc-8e9e-3e6adf364c13)
