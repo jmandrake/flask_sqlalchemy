@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash, jsonify, url_for, redirect
+from flask_login import login_user, login_required, logout_user, current_user
 from .models import User, Note
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
@@ -17,16 +18,20 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in successfully!", category='success')
+                login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
                 flash("Incorrect password, try again.", category='error')
         else:
             flash("Email does not exist.", category='error')
-    return render_template("login.html")
+
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout', methods=['GET', 'POST'])
+@login_required # user must be logged in to access this route
 def logout():
-    return "<p>Logout</p>"
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
@@ -62,11 +67,12 @@ def sign_up():
 
                 db.session.add(new_user) # add the user to the database
                 db.session.commit()
+                login_user(user, remember=True) # log the user in and remember them
                 flash("Account created!", category='success')
                 return redirect(url_for('views.home'))
 
+    return render_template("sign_up.html", user=current_user)
 
-    return render_template("sign_up.html")
 
 @auth.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
